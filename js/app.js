@@ -27,8 +27,8 @@ Enemy.prototype.render = function() {
 // Enemies our player must avoid
 var Player = function() {
     // Variables applied to each of our instances go here
-    this.x = 0;
-    this.y = 0;
+    this.x = 202;
+    this.y = 83 * 5 - 83 / 2;
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
