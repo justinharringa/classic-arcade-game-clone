@@ -5,3 +5,6 @@
 
 ## Directory-based project format:
 .idea/
+
+## NPM / Node
+node_modules/

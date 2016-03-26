@@ -1,0 +1,27 @@
+{
+  "name": "classic-arcade-game-clone",
+  "version": "1.0.0",
+  "description": "Clone of classic arcade game",
+  "main": "index.html",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "jasmine": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-jasmine": "^0.3.8"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justinharringa/classic-arcade-game-clone.git"
+  },
+  "author": "Justin Harringa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/justinharringa/classic-arcade-game-clone/issues"
+  },
+  "homepage": "https://github.com/justinharringa/classic-arcade-game-clone#readme"
+}
