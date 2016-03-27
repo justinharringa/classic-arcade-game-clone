@@ -1,5 +1,10 @@
-var columnWidth = 101;
-var rowHeight = 83;
+var COLUMN_WIDTH = 101;
+var ROW_HEIGHT = 83;
+
+var LEFT = 'left';
+var UP = 'up';
+var RIGHT = 'right';
+var DOWN = 'down';
 
 // Enemies our player must avoid
 var Enemy = function() {
@@ -30,8 +35,8 @@ Enemy.prototype.render = function() {
 // Enemies our player must avoid
 var Player = function() {
     // Variables applied to each of our instances go here
-    this.x = columnWidth * 2;
-    this.y = rowHeight * 5 - rowHeight / 2;
+    this.x = COLUMN_WIDTH * 2;
+    this.y = ROW_HEIGHT * 5 - ROW_HEIGHT / 2;
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -47,8 +52,9 @@ Player.prototype.update = function(dt) {
 };
 
 Player.prototype.handleInput = function(pressedKey) {
-
-
+    if (pressedKey == LEFT) {
+        this.x = this.x - COLUMN_WIDTH;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -68,10 +74,10 @@ var player = new Player();
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down'
+        37: LEFT,
+        38: UP,
+        39: RIGHT,
+        40: DOWN
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
