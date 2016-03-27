@@ -1,6 +1,7 @@
 var COLUMN_WIDTH = 101;
 var ROW_HEIGHT = 83;
 
+var PLAYER_STARTING_X = COLUMN_WIDTH * 2;
 var PLAYER_STARTING_Y = ROW_HEIGHT * 5 - ROW_HEIGHT / 2;
 
 var LEFT = 'left';
@@ -37,7 +38,7 @@ Enemy.prototype.render = function() {
 // Enemies our player must avoid
 var Player = function() {
     // Variables applied to each of our instances go here
-    this.x = COLUMN_WIDTH * 2;
+    this.x = PLAYER_STARTING_X;
     this.y = PLAYER_STARTING_Y;
 
     // The image/sprite for our enemies, this uses
@@ -53,17 +54,21 @@ Player.prototype.update = function(dt) {
     // all computers.
 };
 
+Player.prototype.moveUp = function() {
+    if (this.y == ROW_HEIGHT / 2) {
+        this.y = PLAYER_STARTING_Y;
+    } else {
+        this.y = this.y - ROW_HEIGHT;
+    }
+};
+
 Player.prototype.handleInput = function(pressedKey) {
     if (pressedKey == LEFT && this.x != 0) {
         this.x = this.x - COLUMN_WIDTH;
     } else if (pressedKey == RIGHT && this.x != COLUMN_WIDTH * 4) {
         this.x = this.x + COLUMN_WIDTH;
     } else if (pressedKey == UP) {
-        if (this.y == ROW_HEIGHT / 2) {
-            this.y = PLAYER_STARTING_Y;
-        } else {
-            this.y = this.y - ROW_HEIGHT;
-        }
+        this.moveUp();
     } else if (pressedKey == DOWN) {
         this.y = this.y + ROW_HEIGHT;
     }

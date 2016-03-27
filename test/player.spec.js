@@ -7,10 +7,10 @@ describe("Player", function() {
     });
 
     it("starts in the middle column", function() {
-        expect(newPlayer.x).toBe(COLUMN_WIDTH * 2);
+        expect(newPlayer.x).toBe(PLAYER_STARTING_X);
     });
     it("starts in the bottom row", function() {
-        expect(newPlayer.y).toBe(ROW_HEIGHT * 5 - ROW_HEIGHT / 2);
+        expect(newPlayer.y).toBe(PLAYER_STARTING_Y);
     });
     it("moves left with left command", function() {
         var currentXLocation = newPlayer.x;
