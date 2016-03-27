@@ -22,4 +22,9 @@ describe("Player", function() {
         newPlayer.handleInput(RIGHT);
         expect(newPlayer.x).toBe(currentXLocation + COLUMN_WIDTH);
     });
+    it("moves up with up command", function() {
+        var currentYLocation = newPlayer.y;
+        newPlayer.handleInput(UP);
+        expect(newPlayer.y).toBe(currentYLocation - ROW_HEIGHT);
+    });
 });

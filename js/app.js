@@ -56,6 +56,8 @@ Player.prototype.handleInput = function(pressedKey) {
         this.x = this.x - COLUMN_WIDTH;
     } else if (pressedKey == RIGHT) {
         this.x = this.x + COLUMN_WIDTH;
+    } else if (pressedKey == UP) {
+        this.y = this.y - ROW_HEIGHT;
     }
 };
 
