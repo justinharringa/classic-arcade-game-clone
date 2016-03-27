@@ -54,7 +54,7 @@ Player.prototype.update = function(dt) {
 Player.prototype.handleInput = function(pressedKey) {
     if (pressedKey == LEFT && this.x != 0) {
         this.x = this.x - COLUMN_WIDTH;
-    } else if (pressedKey == RIGHT) {
+    } else if (pressedKey == RIGHT && this.x != COLUMN_WIDTH * 4) {
         this.x = this.x + COLUMN_WIDTH;
     } else if (pressedKey == UP) {
         this.y = this.y - ROW_HEIGHT;

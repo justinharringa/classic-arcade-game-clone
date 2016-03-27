@@ -28,6 +28,12 @@ describe("Player", function() {
         newPlayer.handleInput(RIGHT);
         expect(newPlayer.x).toBe(currentXLocation + COLUMN_WIDTH);
     });
+    it("can't move off right side of screen", function() {
+        newPlayer.handleInput(RIGHT);
+        newPlayer.handleInput(RIGHT);
+        newPlayer.handleInput(RIGHT);
+        expect(newPlayer.x).toBe(COLUMN_WIDTH * 4);
+    });
     it("moves up with up command", function() {
         var currentYLocation = newPlayer.y;
         newPlayer.handleInput(UP);
