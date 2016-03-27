@@ -39,6 +39,15 @@ describe("Player", function() {
         newPlayer.handleInput(UP);
         expect(newPlayer.y).toBe(currentYLocation - ROW_HEIGHT);
     });
+    it("moves to the bottom if he wins (gets to the top row)", function() {
+        var bottomYLocation = newPlayer.y;
+        newPlayer.handleInput(UP);
+        newPlayer.handleInput(UP);
+        newPlayer.handleInput(UP);
+        newPlayer.handleInput(UP);
+        newPlayer.handleInput(UP);
+        expect(newPlayer.y).toBe(bottomYLocation);
+    });
     it("moves down with down command", function() {
         var currentYLocation = newPlayer.y;
         newPlayer.handleInput(DOWN);

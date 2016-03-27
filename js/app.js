@@ -1,6 +1,8 @@
 var COLUMN_WIDTH = 101;
 var ROW_HEIGHT = 83;
 
+var PLAYER_STARTING_Y = ROW_HEIGHT * 5 - ROW_HEIGHT / 2;
+
 var LEFT = 'left';
 var UP = 'up';
 var RIGHT = 'right';
@@ -36,7 +38,7 @@ Enemy.prototype.render = function() {
 var Player = function() {
     // Variables applied to each of our instances go here
     this.x = COLUMN_WIDTH * 2;
-    this.y = ROW_HEIGHT * 5 - ROW_HEIGHT / 2;
+    this.y = PLAYER_STARTING_Y;
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -57,7 +59,11 @@ Player.prototype.handleInput = function(pressedKey) {
     } else if (pressedKey == RIGHT && this.x != COLUMN_WIDTH * 4) {
         this.x = this.x + COLUMN_WIDTH;
     } else if (pressedKey == UP) {
-        this.y = this.y - ROW_HEIGHT;
+        if (this.y == ROW_HEIGHT / 2) {
+            this.y = PLAYER_STARTING_Y;
+        } else {
+            this.y = this.y - ROW_HEIGHT;
+        }
     } else if (pressedKey == DOWN) {
         this.y = this.y + ROW_HEIGHT;
     }
