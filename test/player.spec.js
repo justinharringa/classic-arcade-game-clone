@@ -14,49 +14,59 @@ describe("Player", function() {
     });
     it("moves left with left command", function() {
         var currentXLocation = newPlayer.x;
-        newPlayer.handleInput(LEFT);
+        newPlayer.moveLeft();
         expect(newPlayer.x).toBe(currentXLocation - COLUMN_WIDTH);
     });
     it("can't move off left side of screen", function() {
-        newPlayer.handleInput(LEFT);
-        newPlayer.handleInput(LEFT);
-        newPlayer.handleInput(LEFT);
+        newPlayer.moveLeft();
+        newPlayer.moveLeft();
+        newPlayer.moveLeft();
         expect(newPlayer.x).toBe(0);
     });
     it("moves right with right command", function() {
         var currentXLocation = newPlayer.x;
-        newPlayer.handleInput(RIGHT);
+        newPlayer.moveRight();
         expect(newPlayer.x).toBe(currentXLocation + COLUMN_WIDTH);
     });
     it("can't move off right side of screen", function() {
-        newPlayer.handleInput(RIGHT);
-        newPlayer.handleInput(RIGHT);
-        newPlayer.handleInput(RIGHT);
+        newPlayer.moveRight();
+        newPlayer.moveRight();
+        newPlayer.moveRight();
         expect(newPlayer.x).toBe(COLUMN_WIDTH * 4);
     });
     it("moves up with up command", function() {
         var currentYLocation = newPlayer.y;
-        newPlayer.handleInput(UP);
+        newPlayer.moveUp();
         expect(newPlayer.y).toBe(currentYLocation - ROW_HEIGHT);
     });
     it("moves to the bottom if he wins (gets to the top row)", function() {
-        var bottomYLocation = newPlayer.y;
-        newPlayer.handleInput(UP);
-        newPlayer.handleInput(UP);
-        newPlayer.handleInput(UP);
-        newPlayer.handleInput(UP);
-        newPlayer.handleInput(UP);
-        expect(newPlayer.y).toBe(bottomYLocation);
+        newPlayer.moveUp();
+        newPlayer.moveUp();
+        newPlayer.moveUp();
+        newPlayer.moveUp();
+        newPlayer.moveUp();
+        expect(newPlayer.y).toBe(PLAYER_STARTING_Y);
+    });
+    it("moves to the starting tile in middle if he wins (gets to the top row)", function() {
+        // need to move right to get out of middle column
+        newPlayer.moveRight();
+        newPlayer.moveUp();
+        newPlayer.moveUp();
+        newPlayer.moveUp();
+        newPlayer.moveUp();
+        newPlayer.moveUp();
+        expect(newPlayer.x).toBe(PLAYER_STARTING_X);
     });
     it("moves down with down command", function() {
         var currentYLocation = newPlayer.y;
-        newPlayer.handleInput(UP);
-        newPlayer.handleInput(DOWN);
+        // need to go up then down since player can't move off bottom
+        newPlayer.moveUp();
+        newPlayer.moveDown();
         expect(newPlayer.y).toBe(currentYLocation);
     });
     it("can't move off bottom of screen", function() {
         var currentYLocation = newPlayer.y;
-        newPlayer.handleInput(DOWN);
+        newPlayer.moveDown();
         expect(newPlayer.y).toBe(currentYLocation);
     });
 });

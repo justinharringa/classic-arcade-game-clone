@@ -68,6 +68,7 @@ Player.prototype.moveRight = function () {
 
 Player.prototype.moveUp = function() {
     if (this.y == ROW_HEIGHT / 2) {
+        this.x = PLAYER_STARTING_X;
         this.y = PLAYER_STARTING_Y;
     } else {
         this.y = this.y - ROW_HEIGHT;
@@ -75,7 +76,9 @@ Player.prototype.moveUp = function() {
 };
 
 Player.prototype.moveDown = function() {
-    this.y = this.y + ROW_HEIGHT;
+    if (this.y != PLAYER_STARTING_Y) {
+        this.y = this.y + ROW_HEIGHT;
+    }
 };
 
 Player.prototype.handleInput = function(pressedKey) {
