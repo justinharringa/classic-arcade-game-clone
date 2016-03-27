@@ -50,7 +50,13 @@ describe("Player", function() {
     });
     it("moves down with down command", function() {
         var currentYLocation = newPlayer.y;
+        newPlayer.handleInput(UP);
         newPlayer.handleInput(DOWN);
-        expect(newPlayer.y).toBe(currentYLocation + ROW_HEIGHT);
+        expect(newPlayer.y).toBe(currentYLocation);
+    });
+    it("can't move off bottom of screen", function() {
+        var currentYLocation = newPlayer.y;
+        newPlayer.handleInput(DOWN);
+        expect(newPlayer.y).toBe(currentYLocation);
     });
 });
