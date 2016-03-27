@@ -27,4 +27,9 @@ describe("Player", function() {
         newPlayer.handleInput(UP);
         expect(newPlayer.y).toBe(currentYLocation - ROW_HEIGHT);
     });
+    it("moves down with down command", function() {
+        var currentYLocation = newPlayer.y;
+        newPlayer.handleInput(DOWN);
+        expect(newPlayer.y).toBe(currentYLocation + ROW_HEIGHT);
+    });
 });
