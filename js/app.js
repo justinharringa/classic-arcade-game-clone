@@ -1,3 +1,6 @@
+var columnWidth = 101;
+var rowHeight = 83;
+
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
@@ -27,8 +30,8 @@ Enemy.prototype.render = function() {
 // Enemies our player must avoid
 var Player = function() {
     // Variables applied to each of our instances go here
-    this.x = 202;
-    this.y = 83 * 5 - 83 / 2;
+    this.x = columnWidth * 2;
+    this.y = rowHeight * 5 - rowHeight / 2;
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -43,7 +46,8 @@ Player.prototype.update = function(dt) {
     // all computers.
 };
 
-Player.prototype.handleInput = function() {
+Player.prototype.handleInput = function(pressedKey) {
+
 
 };
 
