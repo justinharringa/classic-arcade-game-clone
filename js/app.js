@@ -54,6 +54,18 @@ Player.prototype.update = function(dt) {
     // all computers.
 };
 
+Player.prototype.moveLeft = function () {
+    if (this.x != 0) {
+        this.x = this.x - COLUMN_WIDTH;
+    }
+};
+
+Player.prototype.moveRight = function () {
+    if (this.x != COLUMN_WIDTH * 4) {
+        this.x = this.x + COLUMN_WIDTH;
+    }
+};
+
 Player.prototype.moveUp = function() {
     if (this.y == ROW_HEIGHT / 2) {
         this.y = PLAYER_STARTING_Y;
@@ -62,15 +74,19 @@ Player.prototype.moveUp = function() {
     }
 };
 
+Player.prototype.moveDown = function() {
+    this.y = this.y + ROW_HEIGHT;
+};
+
 Player.prototype.handleInput = function(pressedKey) {
-    if (pressedKey == LEFT && this.x != 0) {
-        this.x = this.x - COLUMN_WIDTH;
-    } else if (pressedKey == RIGHT && this.x != COLUMN_WIDTH * 4) {
-        this.x = this.x + COLUMN_WIDTH;
+    if (pressedKey == LEFT) {
+        this.moveLeft();
+    } else if (pressedKey == RIGHT) {
+        this.moveRight();
     } else if (pressedKey == UP) {
         this.moveUp();
     } else if (pressedKey == DOWN) {
-        this.y = this.y + ROW_HEIGHT;
+        this.moveDown();
     }
 };
 
