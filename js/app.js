@@ -16,6 +16,7 @@ var Enemy = function() {
     this.x = -COLUMN_WIDTH;
     var startingRow = Math.ceil(Math.random() * 3);
     this.y = ROW_HEIGHT * startingRow - ROW_HEIGHT / 4;
+    this.speed = 20;
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -28,7 +29,7 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x = this.x + 20 * dt;
+    this.x = this.x + this.speed * dt;
 };
 
 // Draw the enemy on the screen, required method for game
