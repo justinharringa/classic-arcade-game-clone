@@ -9,10 +9,11 @@ describe("Enemy", function() {
     it("starts off of the canvas", function() {
         expect(newEnemy.x).toBeLessThan(0);
     });
-    it("should update by using speed", function() {
+    it("update() should move them by speed value if dt is 1", function() {
         newEnemy.x = 0;
-        newEnemy.speed = 500;
+        newEnemy.speed = 50;
+        // update using 1 because we multiply dt by speed
         newEnemy.update(1);
-        expect(newEnemy.x).toBe(500);
+        expect(newEnemy.x).toBe(50);
     });
 });
