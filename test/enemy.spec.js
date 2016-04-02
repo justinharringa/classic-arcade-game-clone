@@ -36,4 +36,15 @@ describe("Enemy", function() {
         player = new Player();
         expect(newEnemy.canBitePlayer(player)).toBe(false);
     });
+    it("should not be able to bite player if he's already passed the player", function() {
+        // enemy is basically on top of player
+        newEnemy.x = COLUMN_WIDTH * 3;
+        newEnemy.currentRow = 3;
+        player = new Player();
+        player.moveLeft();
+        player.moveLeft();
+        player.moveUp();
+        player.moveUp();
+        expect(newEnemy.canBitePlayer(player)).toBe(false);
+    });
 });
