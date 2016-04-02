@@ -56,7 +56,7 @@ Enemy.prototype.mouthLocation = function() {
 };
 
 Enemy.prototype.canBitePlayer = function(player) {
-    return this.mouthLocation() >= player.x;
+    return this.mouthLocation() >= player.leftSideLocation();
 };
 
 // Draw the enemy on the screen, required method for game
@@ -75,6 +75,10 @@ var Player = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/char-boy.png';
+};
+
+Player.prototype.leftSideLocation = function() {
+    return this.x + 20;
 };
 
 // Update the player's position, required method for game
