@@ -20,15 +20,19 @@ var DOWN = 'down';
 var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-    this.x = -COLUMN_WIDTH;
-    var startingRow = Math.ceil(Math.random() * 3);
-
-    this.y = ROW_HEIGHT * startingRow - ENEMY_Y_OFFSET;
+    this.spawn();
     this.speed = Math.ceil(Math.random() * 300) + 20;
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
+};
+
+Enemy.prototype.spawn = function() {
+    this.x = -COLUMN_WIDTH;
+    var startingRow = Math.ceil(Math.random() * 3);
+
+    this.y = ROW_HEIGHT * startingRow - ENEMY_Y_OFFSET;
 };
 
 Enemy.prototype.shouldRespawn = function() {
