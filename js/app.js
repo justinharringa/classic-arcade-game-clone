@@ -57,7 +57,8 @@ Enemy.prototype.mouthLocation = function() {
 };
 
 Enemy.prototype.canBitePlayer = function(player) {
-    return this.mouthLocation() >= player.leftSideLocation();
+    return this.mouthLocation() >= player.leftSideLocation() &&
+        this.currentRow == player.currentRow;
 };
 
 Enemy.prototype.tryToBite = function(player) {
@@ -111,19 +112,22 @@ Player.prototype.moveRight = function () {
 Player.prototype.spawn = function () {
     this.x = PLAYER_STARTING_X;
     this.y = PLAYER_STARTING_Y;
+    this.currentRow = 5;
 };
 
 Player.prototype.moveUp = function() {
     if (this.y == ROW_HEIGHT / 2) {
         this.spawn();
     } else {
-        this.y = this.y - ROW_HEIGHT;
+        this.y -= ROW_HEIGHT;
+        this.currentRow -= 1;
     }
 };
 
 Player.prototype.moveDown = function() {
     if (this.y != PLAYER_STARTING_Y) {
         this.y = this.y + ROW_HEIGHT;
+        this.currentRow += 1;
     }
 };
 
