@@ -45,6 +45,7 @@ Enemy.prototype.update = function(dt) {
     if (this.shouldRespawn()) {
         this.spawn();
     }
+    this.tryToBite(player);
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
@@ -57,6 +58,12 @@ Enemy.prototype.mouthLocation = function() {
 
 Enemy.prototype.canBitePlayer = function(player) {
     return this.mouthLocation() >= player.leftSideLocation();
+};
+
+Enemy.prototype.tryToBite = function(player) {
+    if (this.canBitePlayer(player)) {
+        player.spawn();
+    }
 };
 
 // Draw the enemy on the screen, required method for game
