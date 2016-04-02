@@ -1,5 +1,7 @@
 var COLUMN_WIDTH = 101;
 var ROW_HEIGHT = 83;
+var NUM_COLUMNS = 5;
+var CANVAS_WIDTH = COLUMN_WIDTH * NUM_COLUMNS;
 
 var PLAYER_STARTING_X = COLUMN_WIDTH * 2;
 var PLAYER_STARTING_Y = ROW_HEIGHT * 5 - ROW_HEIGHT / 2;
@@ -21,6 +23,10 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
+};
+
+Enemy.prototype.shouldRespawn = function() {
+    return this.x > CANVAS_WIDTH;
 };
 
 // Update the enemy's position, required method for game

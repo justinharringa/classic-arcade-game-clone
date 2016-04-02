@@ -16,4 +16,8 @@ describe("Enemy", function() {
         newEnemy.update(1);
         expect(newEnemy.x).toBe(50);
     });
+    it("should respawn if moved past screen", function() {
+        newEnemy.x = CANVAS_WIDTH + 1;
+        expect(newEnemy.shouldRespawn()).toBe(true);
+    });
 });
