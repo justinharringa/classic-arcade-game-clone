@@ -18,7 +18,7 @@ var Enemy = function() {
     this.x = -COLUMN_WIDTH;
     var startingRow = Math.ceil(Math.random() * 3);
     this.y = ROW_HEIGHT * startingRow - ROW_HEIGHT / 4;
-    this.speed = 20;
+    this.speed = Math.ceil(Math.random() * 300) + 20;
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
