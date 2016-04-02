@@ -30,9 +30,9 @@ var Enemy = function() {
 
 Enemy.prototype.spawn = function() {
     this.x = -COLUMN_WIDTH;
-    var startingRow = Math.ceil(Math.random() * 3);
+    this.currentRow = Math.ceil(Math.random() * 3);
 
-    this.y = ROW_HEIGHT * startingRow - ENEMY_Y_OFFSET;
+    this.y = ROW_HEIGHT * this.currentRow - ENEMY_Y_OFFSET;
 };
 
 Enemy.prototype.shouldRespawn = function() {
