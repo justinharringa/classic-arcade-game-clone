@@ -62,7 +62,7 @@ Enemy.prototype.render = function() {
 // Enemies our player must avoid
 var Player = function() {
     // Variables applied to each of our instances go here
-    this.moveToStart();
+    this.spawn();
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -89,14 +89,14 @@ Player.prototype.moveRight = function () {
     }
 };
 
-Player.prototype.moveToStart = function () {
+Player.prototype.spawn = function () {
     this.x = PLAYER_STARTING_X;
     this.y = PLAYER_STARTING_Y;
 };
 
 Player.prototype.moveUp = function() {
     if (this.y == ROW_HEIGHT / 2) {
-        this.moveToStart();
+        this.spawn();
     } else {
         this.y = this.y - ROW_HEIGHT;
     }
