@@ -28,4 +28,11 @@ describe("Enemy", function() {
         player.moveUp();
         expect(newEnemy.canBitePlayer(player)).toBe(true);
     });
+    it("should not be able to bite player if player isn't in the same row", function() {
+        // enemy is basically on top of player
+        newEnemy.x = COLUMN_WIDTH * 3;
+        newEnemy.currentRow = 3;
+        player = new Player();
+        expect(newEnemy.canBitePlayer(player)).toBe(false);
+    });
 });
