@@ -3,8 +3,13 @@ var ROW_HEIGHT = 83;
 var NUM_COLUMNS = 5;
 var CANVAS_WIDTH = COLUMN_WIDTH * NUM_COLUMNS;
 
+// These offsets put the enemy and players in reasonable positions on
+// the board
+var ENEMY_Y_OFFSET = ROW_HEIGHT / 4;
+var PLAYER_Y_OFFSET = ROW_HEIGHT / 2;
+
 var PLAYER_STARTING_X = COLUMN_WIDTH * 2;
-var PLAYER_STARTING_Y = ROW_HEIGHT * 5 - ROW_HEIGHT / 2;
+var PLAYER_STARTING_Y = ROW_HEIGHT * 5 - PLAYER_Y_OFFSET;
 
 var LEFT = 'left';
 var UP = 'up';
@@ -17,7 +22,8 @@ var Enemy = function() {
     // we've provided one for you to get started
     this.x = -COLUMN_WIDTH;
     var startingRow = Math.ceil(Math.random() * 3);
-    this.y = ROW_HEIGHT * startingRow - ROW_HEIGHT / 4;
+
+    this.y = ROW_HEIGHT * startingRow - ENEMY_Y_OFFSET;
     this.speed = Math.ceil(Math.random() * 300) + 20;
 
     // The image/sprite for our enemies, this uses
