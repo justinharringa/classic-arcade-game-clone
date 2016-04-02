@@ -20,4 +20,12 @@ describe("Enemy", function() {
         newEnemy.x = CANVAS_WIDTH + 1;
         expect(newEnemy.shouldRespawn()).toBe(true);
     });
+    it("should be able to bite player if within range", function() {
+        // enemy is basically on top of player
+        newEnemy.x = COLUMN_WIDTH * 3;
+        player = new Player();
+        player.moveUp();
+        player.moveUp();
+        expect(newEnemy.canBitePlayer(player)).toBe(true);
+    });
 });

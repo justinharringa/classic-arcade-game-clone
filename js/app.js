@@ -51,6 +51,14 @@ Enemy.prototype.update = function(dt) {
     this.x = this.x + this.speed * dt;
 };
 
+Enemy.prototype.mouthLocation = function() {
+    return this.x + 100;
+};
+
+Enemy.prototype.canBitePlayer = function(player) {
+    return this.mouthLocation() >= player.x;
+};
+
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
