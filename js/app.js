@@ -61,7 +61,10 @@ Enemy.prototype.leftBoundary = function() {
 };
 
 Enemy.prototype.canBitePlayer = function(player) {
-    return this.mouthLocation() >= player.leftSideLocation() &&
+    return ((this.rightBoundary() >= player.leftBoundary() &&
+        this.leftBoundary() <= player.leftBoundary()) ||
+        (this.rightBoundary() >= player.rightBoundary() &&
+        this.leftBoundary() <= player.rightBoundary())) &&
         this.currentRow == player.currentRow;
 };
 
