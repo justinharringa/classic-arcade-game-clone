@@ -37,9 +37,10 @@ describe("Enemy", function() {
         expect(newEnemy.canBitePlayer(player)).toBe(false);
     });
     it("should not be able to bite player if he's already passed the player", function() {
-        // enemy is basically on top of player
+        // enemy is in the middle / row 3
         newEnemy.x = COLUMN_WIDTH * 3;
         newEnemy.currentRow = 3;
+        // player moves to left column / row 3
         player = new Player();
         player.moveLeft();
         player.moveLeft();
