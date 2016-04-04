@@ -61,10 +61,18 @@ Enemy.prototype.leftBoundary = function() {
 };
 
 Enemy.prototype.canBitePlayer = function(player) {
-    return ((this.rightBoundary() >= player.leftBoundary() &&
-        this.leftBoundary() <= player.leftBoundary()) ||
-        (this.rightBoundary() >= player.rightBoundary() &&
-        this.leftBoundary() <= player.rightBoundary())) &&
+    function tailIsTouching(enemy, player) {
+        return (enemy.rightBoundary() >= player.rightBoundary() &&
+            enemy.leftBoundary() <= player.rightBoundary());
+    }
+
+    function headIsTouching(enemy, player) {
+        return (enemy.rightBoundary() >= player.leftBoundary() &&
+            enemy.leftBoundary() <= player.rightBoundary());
+    }
+
+    return (headIsTouching(this, player) ||
+        tailIsTouching(this, player)) &&
         this.currentRow == player.currentRow;
 };
 
