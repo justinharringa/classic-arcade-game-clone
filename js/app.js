@@ -52,8 +52,12 @@ Enemy.prototype.update = function(dt) {
     this.x = this.x + this.speed * dt;
 };
 
-Enemy.prototype.mouthLocation = function() {
-    return this.x + 100;
+Enemy.prototype.rightBoundary = function() {
+    return this.x + COLUMN_WIDTH - 1;
+};
+
+Enemy.prototype.leftBoundary = function() {
+    return this.x + 1;
 };
 
 Enemy.prototype.canBitePlayer = function(player) {
@@ -85,8 +89,12 @@ var Player = function() {
     this.sprite = 'images/char-boy.png';
 };
 
-Player.prototype.leftSideLocation = function() {
+Player.prototype.leftBoundary = function() {
     return this.x + 20;
+};
+
+Player.prototype.rightBoundary = function() {
+    return this.x + COLUMN_WIDTH - 20;
 };
 
 // Update the player's position, required method for game
