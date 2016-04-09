@@ -10,7 +10,7 @@ describe("Player", function() {
         expect(newPlayer.x).toBe(PLAYER_STARTING_X);
     });
     it("starts in the bottom row", function() {
-        expect(newPlayer.y).toBe(PLAYER_STARTING_Y);
+        expect(newPlayer.currentRow).toBe(PLAYER_STARTING_ROW);
     });
     it("moves left with left command", function() {
         var currentXLocation = newPlayer.x;
@@ -35,9 +35,8 @@ describe("Player", function() {
         expect(newPlayer.x).toBe(COLUMN_WIDTH * 4);
     });
     it("moves up with up command", function() {
-        var currentYLocation = newPlayer.y;
         newPlayer.moveUp();
-        expect(newPlayer.y).toBe(currentYLocation - ROW_HEIGHT);
+        expect(newPlayer.currentRow).toBe(PLAYER_STARTING_ROW - 1);
     });
     it("moves to the bottom if he wins (gets to the top row)", function() {
         newPlayer.moveUp();
@@ -45,7 +44,7 @@ describe("Player", function() {
         newPlayer.moveUp();
         newPlayer.moveUp();
         newPlayer.moveUp();
-        expect(newPlayer.y).toBe(PLAYER_STARTING_Y);
+        expect(newPlayer.currentRow).toBe(PLAYER_STARTING_ROW);
     });
     it("moves to the starting tile in middle if he wins (gets to the top row)", function() {
         // need to move right to get out of middle column
@@ -58,15 +57,13 @@ describe("Player", function() {
         expect(newPlayer.x).toBe(PLAYER_STARTING_X);
     });
     it("moves down with down command", function() {
-        var currentYLocation = newPlayer.y;
         // need to go up then down since player can't move off bottom
         newPlayer.moveUp();
         newPlayer.moveDown();
-        expect(newPlayer.y).toBe(currentYLocation);
+        expect(newPlayer.currentRow).toBe(PLAYER_STARTING_ROW);
     });
     it("can't move off bottom of screen", function() {
-        var currentYLocation = newPlayer.y;
         newPlayer.moveDown();
-        expect(newPlayer.y).toBe(currentYLocation);
+        expect(newPlayer.currentRow).toBe(PLAYER_STARTING_ROW);
     });
 });

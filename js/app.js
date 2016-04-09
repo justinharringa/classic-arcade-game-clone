@@ -9,7 +9,7 @@ var ENEMY_Y_OFFSET = ROW_HEIGHT / 4;
 var PLAYER_Y_OFFSET = ROW_HEIGHT / 2;
 
 var PLAYER_STARTING_X = COLUMN_WIDTH * 2;
-var PLAYER_STARTING_Y = ROW_HEIGHT * 5 - PLAYER_Y_OFFSET;
+var PLAYER_STARTING_ROW = 5;
 
 var LEFT = 'left';
 var UP = 'up';
@@ -130,22 +130,19 @@ Player.prototype.moveRight = function () {
 
 Player.prototype.spawn = function () {
     this.x = PLAYER_STARTING_X;
-    this.y = PLAYER_STARTING_Y;
-    this.currentRow = 5;
+    this.currentRow = PLAYER_STARTING_ROW;
 };
 
 Player.prototype.moveUp = function() {
-    if (this.y == PLAYER_Y_OFFSET) {
+    if (this.currentRow == 1) {
         this.spawn();
     } else {
-        this.y -= ROW_HEIGHT;
         this.currentRow -= 1;
     }
 };
 
 Player.prototype.moveDown = function() {
-    if (this.y != PLAYER_STARTING_Y) {
-        this.y = this.y + ROW_HEIGHT;
+    if (this.currentRow != PLAYER_STARTING_ROW) {
         this.currentRow += 1;
     }
 };
@@ -162,9 +159,13 @@ Player.prototype.handleInput = function(pressedKey) {
     }
 };
 
-// Draw the enemy on the screen, required method for game
+Player.prototype.getY = function() {
+    return ROW_HEIGHT * this.currentRow - PLAYER_Y_OFFSET;
+};
+
+// Draw the enemy on the screen, required method for game ROW_HEIGHT * 5 - PLAYER_Y_OFFSET
 Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.getY());
 };
     
 // Now instantiate your objects.
