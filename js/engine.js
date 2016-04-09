@@ -105,8 +105,7 @@ var Engine = (function(global) {
     function checkCollisions() {
         allEnemies.forEach(function(enemy) {
             if (enemy.canBitePlayer(player)) {
-                player.spawn();
-                scoreKeeper.resetScore();
+                player.die();
             }
         });
     }

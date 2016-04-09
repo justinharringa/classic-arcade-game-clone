@@ -136,7 +136,16 @@ Player.prototype.moveRight = function () {
 Player.prototype.spawn = function () {
     this.currentColumn = PLAYER_STARTING_COLUMN;
     this.currentRow = PLAYER_STARTING_ROW;
-    this.lives--;
+};
+
+Player.prototype.die = function() {
+    this.spawn();
+    if (this.lives == 1) {
+        this.lives = 3;
+        this.scoreKeeper.resetScore();
+    } else {
+        this.lives--;
+    }
 };
 
 Player.prototype.moveUp = function() {

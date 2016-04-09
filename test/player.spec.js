@@ -72,7 +72,13 @@ describe("Player", function() {
         expect(newPlayer.lives).toBe(3);
     });
     it("loses a life to respawn", function() {
-        newPlayer.spawn();
+        newPlayer.die();
         expect(newPlayer.lives).toBe(2);
+    });
+    it("gets 3 lives again after losing them all", function() {
+        newPlayer.die();
+        newPlayer.die();
+        newPlayer.die();
+        expect(newPlayer.lives).toBe(3);
     });
 });
