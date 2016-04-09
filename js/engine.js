@@ -105,7 +105,7 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             if (enemy.canBitePlayer(player)) {
                 player.spawn();
-                scoreKeeper.reset();
+                scoreKeeper.resetScore();
             }
         });
     }
