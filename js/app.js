@@ -192,6 +192,11 @@ ScoreKeeper.prototype.getScore = function() {
     return this.currentScore;
 };
 
+ScoreKeeper.prototype.winGame = function() {
+    this.currentScore++;
+};
+
+
 // Now instantiate your objects.
 var allEnemies = [new Enemy(), new Enemy(), new Enemy()];
 var player = new Player();
