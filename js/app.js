@@ -185,7 +185,7 @@ Player.prototype.render = function() {
 
 // ScoreKeeper class
 var ScoreKeeper = function() {
-    this.currentScore = 0;
+    this.resetScore();
 };
 
 ScoreKeeper.prototype.getScore = function() {
@@ -194,6 +194,10 @@ ScoreKeeper.prototype.getScore = function() {
 
 ScoreKeeper.prototype.addWin = function() {
     this.currentScore++;
+};
+
+ScoreKeeper.prototype.resetScore = function() {
+    this.currentScore = 0;
 };
 
 

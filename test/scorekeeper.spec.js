@@ -20,4 +20,10 @@ describe("ScoreKeeper", function() {
         newScoreKeeper.addWin();
         expect(newScoreKeeper.getScore()).toBe(2);
     });
+
+    it("should properly reset the score after winning a game", function() {
+        newScoreKeeper.addWin();
+        newScoreKeeper.resetScore();
+        expect(newScoreKeeper.getScore()).toBe(0);
+    });
 });
