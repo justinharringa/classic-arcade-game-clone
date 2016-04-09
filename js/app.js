@@ -1,6 +1,10 @@
 var COLUMN_WIDTH = 101;
 var ROW_HEIGHT = 83;
 
+// Grid constants
+// NOTE: The columns / rows start at 0 from the top left part of the canvas
+var PLAYER_STARTING_COLUMN = 2;
+var PLAYER_STARTING_ROW = 5;
 var NUM_COLUMNS = 5;
 var FIRST_COLUMN = 0;
 // needs to be 0-based
@@ -12,8 +16,8 @@ var CANVAS_WIDTH = COLUMN_WIDTH * NUM_COLUMNS;
 var ENEMY_Y_OFFSET = ROW_HEIGHT / 4;
 var PLAYER_Y_OFFSET = ROW_HEIGHT / 2;
 
-var PLAYER_STARTING_COLUMN = 2;
-var PLAYER_STARTING_ROW = 5;
+var ENEMY_IMAGE_MARGIN = 1;
+var PLAYER_IMAGE_MARGIN = 20;
 
 var LEFT = 'left';
 var UP = 'up';
@@ -59,11 +63,11 @@ Enemy.prototype.update = function(dt) {
 };
 
 Enemy.prototype.rightBoundary = function() {
-    return this.x + COLUMN_WIDTH - 1;
+    return this.x + COLUMN_WIDTH - ENEMY_IMAGE_MARGIN;
 };
 
 Enemy.prototype.leftBoundary = function() {
-    return this.x + 1;
+    return this.x + ENEMY_IMAGE_MARGIN;
 };
 
 Enemy.prototype.canBitePlayer = function(player) {
@@ -109,11 +113,11 @@ var Player = function() {
 };
 
 Player.prototype.leftBoundary = function() {
-    return this.getX() + 20;
+    return this.getX() + PLAYER_IMAGE_MARGIN;
 };
 
 Player.prototype.rightBoundary = function() {
-    return this.getX() + COLUMN_WIDTH - 20;
+    return this.getX() + COLUMN_WIDTH - PLAYER_IMAGE_MARGIN;
 };
 
 // Update the player's position, required method for game
