@@ -7,32 +7,30 @@ describe("Player", function() {
     });
 
     it("starts in the middle column", function() {
-        expect(newPlayer.x).toBe(PLAYER_STARTING_X);
+        expect(newPlayer.currentColumn).toBe(PLAYER_STARTING_COLUMN);
     });
     it("starts in the bottom row", function() {
         expect(newPlayer.currentRow).toBe(PLAYER_STARTING_ROW);
     });
     it("moves left with left command", function() {
-        var currentXLocation = newPlayer.x;
         newPlayer.moveLeft();
-        expect(newPlayer.x).toBe(currentXLocation - COLUMN_WIDTH);
+        expect(newPlayer.currentColumn).toBe(PLAYER_STARTING_COLUMN - 1);
     });
     it("can't move off left side of screen", function() {
         newPlayer.moveLeft();
         newPlayer.moveLeft();
         newPlayer.moveLeft();
-        expect(newPlayer.x).toBe(0);
+        expect(newPlayer.currentColumn).toBe(0);
     });
     it("moves right with right command", function() {
-        var currentXLocation = newPlayer.x;
         newPlayer.moveRight();
-        expect(newPlayer.x).toBe(currentXLocation + COLUMN_WIDTH);
+        expect(newPlayer.currentColumn).toBe(PLAYER_STARTING_COLUMN + 1);
     });
     it("can't move off right side of screen", function() {
         newPlayer.moveRight();
         newPlayer.moveRight();
         newPlayer.moveRight();
-        expect(newPlayer.x).toBe(COLUMN_WIDTH * 4);
+        expect(newPlayer.currentColumn).toBe(4);
     });
     it("moves up with up command", function() {
         newPlayer.moveUp();
@@ -54,7 +52,7 @@ describe("Player", function() {
         newPlayer.moveUp();
         newPlayer.moveUp();
         newPlayer.moveUp();
-        expect(newPlayer.x).toBe(PLAYER_STARTING_X);
+        expect(newPlayer.currentColumn).toBe(PLAYER_STARTING_COLUMN);
     });
     it("moves down with down command", function() {
         // need to go up then down since player can't move off bottom

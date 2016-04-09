@@ -8,7 +8,7 @@ var CANVAS_WIDTH = COLUMN_WIDTH * NUM_COLUMNS;
 var ENEMY_Y_OFFSET = ROW_HEIGHT / 4;
 var PLAYER_Y_OFFSET = ROW_HEIGHT / 2;
 
-var PLAYER_STARTING_X = COLUMN_WIDTH * 2;
+var PLAYER_STARTING_COLUMN = 2;
 var PLAYER_STARTING_ROW = 5;
 
 var LEFT = 'left';
@@ -101,11 +101,11 @@ var Player = function() {
 };
 
 Player.prototype.leftBoundary = function() {
-    return this.x + 20;
+    return this.getX() + 20;
 };
 
 Player.prototype.rightBoundary = function() {
-    return this.x + COLUMN_WIDTH - 20;
+    return this.getX() + COLUMN_WIDTH - 20;
 };
 
 // Update the player's position, required method for game
@@ -117,19 +117,19 @@ Player.prototype.update = function(dt) {
 };
 
 Player.prototype.moveLeft = function () {
-    if (this.x != 0) {
-        this.x = this.x - COLUMN_WIDTH;
+    if (this.currentColumn != 0) {
+        this.currentColumn--;
     }
 };
 
 Player.prototype.moveRight = function () {
-    if (this.x != COLUMN_WIDTH * 4) {
-        this.x = this.x + COLUMN_WIDTH;
+    if (this.currentColumn != 4) {
+        this.currentColumn++;
     }
 };
 
 Player.prototype.spawn = function () {
-    this.x = PLAYER_STARTING_X;
+    this.currentColumn = PLAYER_STARTING_COLUMN;
     this.currentRow = PLAYER_STARTING_ROW;
 };
 
@@ -159,13 +159,17 @@ Player.prototype.handleInput = function(pressedKey) {
     }
 };
 
+Player.prototype.getX = function() {
+    return COLUMN_WIDTH * this.currentColumn;
+};
+
 Player.prototype.getY = function() {
     return ROW_HEIGHT * this.currentRow - PLAYER_Y_OFFSET;
 };
 
-// Draw the enemy on the screen, required method for game ROW_HEIGHT * 5 - PLAYER_Y_OFFSET
+// Draw the enemy on the screen, required method for game
 Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.getY());
+    ctx.drawImage(Resources.get(this.sprite), this.getX(), this.getY());
 };
     
 // Now instantiate your objects.
