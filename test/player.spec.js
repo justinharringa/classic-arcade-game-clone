@@ -36,22 +36,16 @@ describe("Player", function() {
         newPlayer.moveUp();
         expect(newPlayer.currentRow).toBe(PLAYER_STARTING_ROW - 1);
     });
-    it("moves to the bottom if he wins (gets to the top row)", function() {
+    it("moves back to the bottom if he respawns", function() {
         newPlayer.moveUp();
         newPlayer.moveUp();
-        newPlayer.moveUp();
-        newPlayer.moveUp();
-        newPlayer.moveUp();
+        newPlayer.spawn();
         expect(newPlayer.currentRow).toBe(PLAYER_STARTING_ROW);
     });
-    it("moves to the starting tile in middle if he wins (gets to the top row)", function() {
-        // need to move right to get out of middle column
+    it("moves back to the middle if he respawns", function() {
         newPlayer.moveRight();
-        newPlayer.moveUp();
-        newPlayer.moveUp();
-        newPlayer.moveUp();
-        newPlayer.moveUp();
-        newPlayer.moveUp();
+        newPlayer.moveRight();
+        newPlayer.spawn();
         expect(newPlayer.currentColumn).toBe(PLAYER_STARTING_COLUMN);
     });
     it("moves down with down command", function() {
