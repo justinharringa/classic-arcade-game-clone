@@ -177,7 +177,7 @@ Player.prototype.getY = function() {
     return ROW_HEIGHT * this.currentRow - PLAYER_Y_OFFSET;
 };
 
-// Draw the enemy on the screen, required method for game
+// Draw the player on the screen, required method for game
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.getX(), this.getY());
 };
@@ -200,10 +200,15 @@ ScoreKeeper.prototype.resetScore = function() {
     this.currentScore = 0;
 };
 
+// Draw the score on the screen, required method for game
+ScoreKeeper.prototype.render = function() {
+    currentScore.innerHTML = this.getScore();
+};
 
 // Now instantiate your objects.
 var allEnemies = [new Enemy(), new Enemy(), new Enemy()];
 var player = new Player();
+var scoreKeeper = new ScoreKeeper();
 
 
 // This listens for key presses and sends the keys to your

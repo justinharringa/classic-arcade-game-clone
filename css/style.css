@@ -1,3 +1,26 @@
+html {
+    display: table;
+    margin: auto;
+}
+
 body {
     text-align: center;
+    display: table-cell;
+    background-color: #060;
+    font-family: "Roboto", sans-serif;
+}
+
+.label,
+.score {
+    color: white;
+    font-size: 28px;
+    display: inline-block;
+}
+
+.scoreboard {
+    float: right;
+}
+
+.container {
+    max-width: 505px;
 }
