@@ -201,10 +201,22 @@ ScoreKeeper.prototype.render = function() {
     currentScore.innerHTML = this.getScore();
 };
 
+
+// LivesRenderer class
+var LivesRenderer = function(player) {
+    this.player = player;
+};
+
+LivesRenderer.prototype.render = function() {
+    currentLives.innerHTML = this.player.lives;
+};
+
+
 // Now instantiate objects.
 var allEnemies = [new Enemy(), new Enemy(), new Enemy()];
 var scoreKeeper = new ScoreKeeper();
 var player = new Player(scoreKeeper);
+var livesRenderer = new LivesRenderer(player);
 
 
 // This listens for key presses and sends the keys to your

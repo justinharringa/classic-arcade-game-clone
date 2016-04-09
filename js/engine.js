@@ -22,6 +22,7 @@ var Engine = (function(global) {
     var doc = global.document,
         win = global.window,
         currentScore = doc.getElementById('current-score'),
+        currentLives = doc.getElementById('current-lives'),
         canvas = doc.getElementById('canvas'),
         ctx = canvas.getContext('2d'),
         lastTime;
@@ -166,6 +167,7 @@ var Engine = (function(global) {
 
         player.render();
         scoreKeeper.render();
+        livesRenderer.render();
     }
 
     /* This function does nothing but it could have been a good place to
@@ -195,4 +197,5 @@ var Engine = (function(global) {
      */
     global.ctx = ctx;
     global.currentScore = currentScore;
+    global.currentLives = currentLives;
 })(this);
