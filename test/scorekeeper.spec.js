@@ -11,7 +11,13 @@ describe("ScoreKeeper", function() {
     });
 
     it("should increment score by one after winning a game", function() {
-        newScoreKeeper.winGame();
+        newScoreKeeper.addWin();
         expect(newScoreKeeper.getScore()).toBe(1);
-    })
+    });
+
+    it("should have a current score of 2 after winning 2 games", function() {
+        newScoreKeeper.addWin();
+        newScoreKeeper.addWin();
+        expect(newScoreKeeper.getScore()).toBe(2);
+    });
 });

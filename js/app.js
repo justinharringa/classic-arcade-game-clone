@@ -192,7 +192,7 @@ ScoreKeeper.prototype.getScore = function() {
     return this.currentScore;
 };
 
-ScoreKeeper.prototype.winGame = function() {
+ScoreKeeper.prototype.addWin = function() {
     this.currentScore++;
 };
 
