@@ -71,4 +71,8 @@ describe("Player", function() {
     it("starts with 3 lives", function() {
         expect(newPlayer.lives).toBe(3);
     });
+    it("loses a life to respawn", function() {
+        newPlayer.spawn();
+        expect(newPlayer.lives).toBe(2);
+    });
 });

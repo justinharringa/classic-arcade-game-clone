@@ -136,6 +136,7 @@ Player.prototype.moveRight = function () {
 Player.prototype.spawn = function () {
     this.currentColumn = PLAYER_STARTING_COLUMN;
     this.currentRow = PLAYER_STARTING_ROW;
+    this.lives--;
 };
 
 Player.prototype.moveUp = function() {
