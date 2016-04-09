@@ -1,9 +1,11 @@
 describe("Player", function() {
 
     var newPlayer;
+    var newScoreKeeper;
 
     beforeEach(function () {
-        newPlayer = new Player();
+        newScoreKeeper = new ScoreKeeper();
+        newPlayer = new Player(newScoreKeeper);
     });
 
     it("starts in the middle column", function() {
@@ -57,5 +59,13 @@ describe("Player", function() {
     it("can't move off bottom of screen", function() {
         newPlayer.moveDown();
         expect(newPlayer.currentRow).toBe(PLAYER_STARTING_ROW);
+    });
+    it("adds to score keeper's score if he wins", function() {
+        newPlayer.moveUp();
+        newPlayer.moveUp();
+        newPlayer.moveUp();
+        newPlayer.moveUp();
+        newPlayer.moveUp();
+        expect(newScoreKeeper.getScore()).toBe(1);
     });
 });

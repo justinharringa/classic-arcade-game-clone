@@ -96,9 +96,10 @@ Enemy.prototype.render = function() {
 // Player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var Player = function() {
+var Player = function(scoreKeeper) {
     // Variables applied to each of our instances go here
     this.spawn();
+    this.scoreKeeper = scoreKeeper;
 
     // The image/sprite for our players, this uses
     // a helper we've provided to easily load images
@@ -139,6 +140,7 @@ Player.prototype.spawn = function () {
 Player.prototype.moveUp = function() {
     if (this.currentRow == 1) {
         this.spawn();
+        this.scoreKeeper.addWin();
     } else {
         this.currentRow--;
     }
@@ -200,8 +202,8 @@ ScoreKeeper.prototype.render = function() {
 
 // Now instantiate objects.
 var allEnemies = [new Enemy(), new Enemy(), new Enemy()];
-var player = new Player();
 var scoreKeeper = new ScoreKeeper();
+var player = new Player(scoreKeeper);
 
 
 // This listens for key presses and sends the keys to your
