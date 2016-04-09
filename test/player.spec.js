@@ -20,7 +20,7 @@ describe("Player", function() {
         newPlayer.moveLeft();
         newPlayer.moveLeft();
         newPlayer.moveLeft();
-        expect(newPlayer.currentColumn).toBe(0);
+        expect(newPlayer.currentColumn).toBe(FIRST_COLUMN);
     });
     it("moves right with right command", function() {
         newPlayer.moveRight();
@@ -30,7 +30,7 @@ describe("Player", function() {
         newPlayer.moveRight();
         newPlayer.moveRight();
         newPlayer.moveRight();
-        expect(newPlayer.currentColumn).toBe(4);
+        expect(newPlayer.currentColumn).toBe(LAST_COLUMN);
     });
     it("moves up with up command", function() {
         newPlayer.moveUp();
