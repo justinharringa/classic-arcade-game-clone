@@ -100,6 +100,7 @@ var Player = function(scoreKeeper) {
     // Variables applied to each of our instances go here
     this.spawn();
     this.scoreKeeper = scoreKeeper;
+    this.lives = 3;
 
     // The image/sprite for our players, this uses
     // a helper we've provided to easily load images

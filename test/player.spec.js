@@ -68,4 +68,7 @@ describe("Player", function() {
         newPlayer.moveUp();
         expect(newScoreKeeper.getScore()).toBe(1);
     });
+    it("starts with 3 lives", function() {
+        expect(newPlayer.lives).toBe(3);
+    });
 });
