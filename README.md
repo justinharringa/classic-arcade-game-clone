@@ -1,3 +1,8 @@
+# Running the game
+Simply open index.html up in a browser and you can use the arrow keys to 
+move the player. When you reach the top with the player he'll respawn at 
+the bottom to start again.
+
 # Setup
 I'm using [npm](https://docs.npmjs.com/getting-started/installing-node) to 
 manage dependencies (which really only amount to build/TDD tools)
