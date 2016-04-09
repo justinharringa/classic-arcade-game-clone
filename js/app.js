@@ -135,7 +135,7 @@ Player.prototype.spawn = function () {
 };
 
 Player.prototype.moveUp = function() {
-    if (this.y == ROW_HEIGHT / 2) {
+    if (this.y == PLAYER_Y_OFFSET) {
         this.spawn();
     } else {
         this.y -= ROW_HEIGHT;
