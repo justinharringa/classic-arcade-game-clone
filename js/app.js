@@ -56,7 +56,6 @@ Enemy.prototype.update = function(dt) {
     if (this.shouldRespawn()) {
         this.spawn();
     }
-    this.tryToBite(player);
     // Multiply any movement by the dt parameter which will ensure the game runs
     // at the same speed for all computers.
     this.x = this.x + this.speed * dt;
@@ -84,12 +83,6 @@ Enemy.prototype.canBitePlayer = function(player) {
     return (headIsTouching(this, player) ||
         tailIsTouching(this, player)) &&
         this.currentRow == player.currentRow;
-};
-
-Enemy.prototype.tryToBite = function(player) {
-    if (this.canBitePlayer(player)) {
-        player.spawn();
-    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -205,7 +198,7 @@ ScoreKeeper.prototype.render = function() {
     currentScore.innerHTML = this.getScore();
 };
 
-// Now instantiate your objects.
+// Now instantiate objects.
 var allEnemies = [new Enemy(), new Enemy(), new Enemy()];
 var player = new Player();
 var scoreKeeper = new ScoreKeeper();

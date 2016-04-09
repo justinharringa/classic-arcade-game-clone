@@ -80,7 +80,7 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
     }
 
     /* This is called by the update function and loops through all of the
@@ -95,6 +95,19 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
         player.update();
+    }
+
+    /* This is called by the update function to check if any enemies are able
+     * to bite the player. If so, then the player has lost and the score should
+     * be reset.
+     */
+    function checkCollisions() {
+        allEnemies.forEach(function(enemy) {
+            if (enemy.canBitePlayer(player)) {
+                player.spawn();
+                scoreKeeper.reset();
+            }
+        });
     }
 
     /* This function initially draws the "game level", it will then call
