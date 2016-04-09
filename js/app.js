@@ -1,6 +1,10 @@
 var COLUMN_WIDTH = 101;
 var ROW_HEIGHT = 83;
+
 var NUM_COLUMNS = 5;
+var FIRST_COLUMN = 0;
+// needs to be 0-based
+var LAST_COLUMN = NUM_COLUMNS - 1;
 var CANVAS_WIDTH = COLUMN_WIDTH * NUM_COLUMNS;
 
 // These offsets put the enemy and players in reasonable positions on
@@ -21,6 +25,7 @@ var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     this.spawn();
+    // Select a speed between 20 and 300
     this.speed = Math.ceil(Math.random() * 300) + 20;
 
     // The image/sprite for our enemies, this uses
@@ -29,7 +34,9 @@ var Enemy = function() {
 };
 
 Enemy.prototype.spawn = function() {
+    // Enemy should start off screen so make them go back one complete column
     this.x = -COLUMN_WIDTH;
+    // Select one of the 3 top rows to spawn in
     this.currentRow = Math.ceil(Math.random() * 3);
 
     this.y = ROW_HEIGHT * this.currentRow - ENEMY_Y_OFFSET;
@@ -46,9 +53,8 @@ Enemy.prototype.update = function(dt) {
         this.spawn();
     }
     this.tryToBite(player);
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
+    // Multiply any movement by the dt parameter which will ensure the game runs
+    // at the same speed for all computers.
     this.x = this.x + this.speed * dt;
 };
 
@@ -87,15 +93,17 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Now write your own player class
+
+
+
+// Player class
 // This class requires an update(), render() and
 // a handleInput() method.
-// Enemies our player must avoid
 var Player = function() {
     // Variables applied to each of our instances go here
     this.spawn();
 
-    // The image/sprite for our enemies, this uses
+    // The image/sprite for our players, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/char-boy.png';
 };
@@ -111,19 +119,17 @@ Player.prototype.rightBoundary = function() {
 // Update the player's position, required method for game
 // Parameter: dt, a time delta between ticks
 Player.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
+    // Currently a null op... Relying on moveXXXX() methods and render()
 };
 
 Player.prototype.moveLeft = function () {
-    if (this.currentColumn != 0) {
+    if (this.currentColumn != FIRST_COLUMN) {
         this.currentColumn--;
     }
 };
 
 Player.prototype.moveRight = function () {
-    if (this.currentColumn != 4) {
+    if (this.currentColumn != LAST_COLUMN) {
         this.currentColumn++;
     }
 };
@@ -137,13 +143,13 @@ Player.prototype.moveUp = function() {
     if (this.currentRow == 1) {
         this.spawn();
     } else {
-        this.currentRow -= 1;
+        this.currentRow--;
     }
 };
 
 Player.prototype.moveDown = function() {
     if (this.currentRow != PLAYER_STARTING_ROW) {
-        this.currentRow += 1;
+        this.currentRow++;
     }
 };
 
