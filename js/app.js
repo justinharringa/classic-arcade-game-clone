@@ -181,13 +181,20 @@ Player.prototype.getY = function() {
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.getX(), this.getY());
 };
-    
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-var allEnemies = [new Enemy(), new Enemy(), new Enemy()];
-// Place the player object in a variable called player
-var player = new Player();
 
+
+// ScoreKeeper class
+var ScoreKeeper = function() {
+    this.currentScore = 0;
+};
+
+ScoreKeeper.prototype.getScore = function() {
+    return this.currentScore;
+};
+
+// Now instantiate your objects.
+var allEnemies = [new Enemy(), new Enemy(), new Enemy()];
+var player = new Player();
 
 
 // This listens for key presses and sends the keys to your
