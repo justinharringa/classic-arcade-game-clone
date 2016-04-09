@@ -11,7 +11,7 @@ body {
 }
 
 .label,
-.score {
+.counter {
     color: white;
     font-size: 28px;
     display: inline-block;
@@ -19,6 +19,10 @@ body {
 
 .scoreboard {
     float: right;
+}
+
+.life-meter {
+    float: left;
 }
 
 .container {
