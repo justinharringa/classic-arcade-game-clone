@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Clone of classic arcade game",
   "main": "index.html",
-  "dependencies": {},
   "devDependencies": {
     "gulp": "^4.0.2",
     "jasmine": "^2.4.1",
